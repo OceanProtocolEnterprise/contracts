@@ -23,7 +23,7 @@ task("accounts", "Prints the list of accounts", async () => {
 module.exports = {
   solidity: {
     compilers: [
-     {
+      {
         version: "0.8.12",
         settings: {
           optimizer: {
@@ -46,7 +46,7 @@ module.exports = {
       //  url: process.env.ALCHEMY_URL,
       //  blockNumber: 12545000,
       //},
-      gasPrice:1000000000
+      gasPrice: 1000000000
     },
     mainnet: {
       url:
@@ -67,6 +67,12 @@ module.exports = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
     goerli: {
+      url:
+        process.env.NETWORK_RPC_URL !== undefined ? process.env.NETWORK_RPC_URL : "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    sepolia: {
       url:
         process.env.NETWORK_RPC_URL !== undefined ? process.env.NETWORK_RPC_URL : "",
       accounts:
@@ -102,7 +108,7 @@ module.exports = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
-    energyweb:{
+    energyweb: {
       url:
         process.env.NETWORK_RPC_URL !== undefined ? process.env.NETWORK_RPC_URL : "",
       accounts:
@@ -169,58 +175,67 @@ module.exports = {
       oasis_saphire_testnet: process.env.ETHERSCAN_API_KEY,
       oasis_saphire: process.env.ETHERSCAN_API_KEY,
       optimism_sepolia: process.env.ETHERSCAN_API_KEY,
-      optimism: process.env.ETHERSCAN_API_KEY
+      optimism: process.env.ETHERSCAN_API_KEY,
+      sepolia: process.env.ETHERSCAN_API_KEY,
     },
     customChains: [
-    {
-      network: "alfajores",
-      chainId: 44787,
-      urls: {
+      {
+        network: "alfajores",
+        chainId: 44787,
+        urls: {
           apiURL: "https://api-alfajores.celoscan.io/api",
           browserURL: "https://alfajores.celoscan.io",
-      }
-    },
-    {
-      network: "celo",
-      chainId: 42220,
-      urls: { 
+        }
+      },
+      {
+        network: "celo",
+        chainId: 42220,
+        urls: {
           apiURL: "https://api.celoscan.io/api",
           browserURL: "https://celoscan.io/",
+        },
       },
-    },
-    {
-      network: "oasis_saphire",
-      chainId: 23294,
-      urls: { 
+      {
+        network: "oasis_saphire",
+        chainId: 23294,
+        urls: {
           apiURL: "https://explorer.sapphire.oasis.io/api",
           browserURL: "https://explorer.sapphire.oasis.io/",
+        },
       },
-    },
-    {
-      network: "oasis_saphire_testnet",
-      chainId: 23295,
-      urls: { 
+      {
+        network: "oasis_saphire_testnet",
+        chainId: 23295,
+        urls: {
           apiURL: "https://testnet.explorer.sapphire.oasis.dev/api",
           browserURL: "https://testnet.explorer.sapphire.oasis.dev/",
+        },
       },
-    },
-    {
-      network: "optimism_sepolia",
-      chainId: 11155420,
-      urls: { 
+      {
+        network: "optimism_sepolia",
+        chainId: 11155420,
+        urls: {
           apiURL: "https://api-sepolia-optimistic.etherscan.io/api",
           browserURL: "https://sepolia-optimism.etherscan.io/",
+        },
       },
-    },
-    {
-      network: "optimism",
-      chainId: 10,
-      urls: { 
+      {
+        network: "optimism",
+        chainId: 10,
+        urls: {
           apiURL: "https://api-optimistic.etherscan.io/api",
           browserURL: "https://optimism.etherscan.io/",
+        },
       },
-    }
-    ] 
+      {
+        network: "sepolia",
+        chainId: 11155111,
+        urls: {
+          apiURL: "https://api-sepolia.etherscan.io/api",
+          browserURL: "https://sepolia.etherscan.io/",
+        },
+      },
+    ]
   },
   contractSizer: {
     alphaSort: true,

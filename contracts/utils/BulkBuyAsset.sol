@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-contract BulkBuyAsset is ReentrancyGuard, Ownable {
+contract BulkBuyAsset is ReentrancyGuard, Ownable  {
     
     using SafeERC20 for IERC20;
 
@@ -58,7 +58,6 @@ contract BulkBuyAsset is ReentrancyGuard, Ownable {
         );
 
         for (uint i = 0; i < _bulkFreParams.exchangeContracts.length; i++) {
-            // Individual parameters for the current iteration
             IERC20TemplateEnterprise.OrderParams memory orderParams = IERC20TemplateEnterprise.OrderParams({
                 consumer: _bulkOrderParams.consumer,
                 serviceIndex: _bulkOrderParams.serviceIndex,
@@ -87,7 +86,6 @@ contract BulkBuyAsset is ReentrancyGuard, Ownable {
                 marketFeeAddress: _bulkFreParams.marketFeeAddresses[i]
             });
 
-            // Retrieve the base token address from the exchange
             IFixedRateExchange fre = IFixedRateExchange(freParams.exchangeContract);
             (
                 ,
@@ -104,23 +102,19 @@ contract BulkBuyAsset is ReentrancyGuard, Ownable {
 
             ) = fre.getExchange(freParams.exchangeId);
             
-            // Ensure this contract has enough base tokens to proceed
             (uint256 baseTokenAmount, , , ) = fre.calcBaseInGivenOutDT(
                 freParams.exchangeId,
                 1e18,  // Always buying 1 DT
                 freParams.swapMarketFee
             );
             require(baseTokenAmount <= freParams.maxBaseTokenAmount, "Too many base tokens");
-            // Transfer the necessary base tokens from the user to this contract
+
             IERC20(baseToken).safeTransferFrom(msg.sender, address(this), baseTokenAmount);
 
-            // Approve the first contract to spend the base tokens
             IERC20(baseToken).safeIncreaseAllowance(_erc20TemplateEnterpriseAddresses[i], baseTokenAmount);
 
-            // Create an instance of the ERC20TemplateEnterprise interface
             IERC20TemplateEnterprise erc20TemplateEnterprise = IERC20TemplateEnterprise(_erc20TemplateEnterpriseAddresses[i]);
 
-            // Call the buyFromFreAndOrder method using the interface
             erc20TemplateEnterprise.buyFromFreAndOrder(orderParams, freParams);
         }
     }
