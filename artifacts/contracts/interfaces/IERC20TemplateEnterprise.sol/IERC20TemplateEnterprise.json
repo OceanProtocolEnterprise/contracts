@@ -1,0 +1,137 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IERC20TemplateEnterprise",
+  "sourceName": "contracts/interfaces/IERC20TemplateEnterprise.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "consumer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "serviceIndex",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "providerFeeAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "providerFeeToken",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "providerFeeAmount",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint8",
+                  "name": "v",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "r",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "s",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "validUntil",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "providerData",
+                  "type": "bytes"
+                }
+              ],
+              "internalType": "struct IERC20TemplateEnterprise.providerFee",
+              "name": "_providerFee",
+              "type": "tuple"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "consumeMarketFeeAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "consumeMarketFeeToken",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "consumeMarketFeeAmount",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct IERC20TemplateEnterprise.consumeMarketFee",
+              "name": "_consumeMarketFee",
+              "type": "tuple"
+            }
+          ],
+          "internalType": "struct IERC20TemplateEnterprise.OrderParams",
+          "name": "_orderParams",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "exchangeContract",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "exchangeId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxBaseTokenAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "swapMarketFee",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "marketFeeAddress",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IERC20TemplateEnterprise.FreParams",
+          "name": "_freParams",
+          "type": "tuple"
+        }
+      ],
+      "name": "buyFromFreAndOrder",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
